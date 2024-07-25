@@ -14,7 +14,7 @@ const AppBar: React.FC = () => {
             className="flex items-center space-x-3 rtl:space-x-reverse"
           >
             <h1 className="self-center text-2xl font-semibold whitespace-nowrap text-slate-900">
-              WalkerSAS logo holder
+              <a href="/">WalkerSAS</a>
             </h1>
           </a>
           <div className="items-center justify-between space-x-6 hidden md:flex">

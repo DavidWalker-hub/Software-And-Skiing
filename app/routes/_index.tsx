@@ -1,10 +1,7 @@
 import type { MetaFunction } from "@remix-run/node";
-import { Cloudinary } from "@cloudinary/url-gen";
-import { auto } from "@cloudinary/url-gen/actions/resize";
-import { autoGravity } from "@cloudinary/url-gen/qualifiers/gravity";
 import { AdvancedImage } from "@cloudinary/react";
-import { upscale } from "@cloudinary/url-gen/actions/effect";
 import HomeProfile from "~/components/HomeProfile";
+import { useImage } from "~/hooks/ImageContext";
 
 export const meta: MetaFunction = () => {
   return [
@@ -18,13 +15,7 @@ export const meta: MetaFunction = () => {
 };
 
 export default function Index() {
-  const cld = new Cloudinary({ cloud: { cloudName: "dwski90" } });
-
-  const img = cld
-    .image("SoftwareAndSkiing/landing-page")
-    .quality("auto")
-    .resize(auto().gravity(autoGravity()).width(1920).height(1080))
-    .effect(upscale());
+  const { landingPageImage } = useImage();
   return (
     <div className="font-sans w-screen h-screen mt-12">
       {/* <h1 className="text-3xl">Welcome to Remix</h1>
@@ -60,16 +51,20 @@ export default function Index() {
           </a>
         </li>
       </ul> */}
-      <AdvancedImage
-        style={{
-          maxWidth: "100%",
-          width: "100%",
-          maxHeight: "90%",
-          objectFit: "cover",
-          objectPosition: "center",
-        }}
-        cldImg={img}
-      />
+      {landingPageImage ? (
+        <AdvancedImage
+          style={{
+            maxWidth: "100%",
+            width: "100%",
+            maxHeight: "90%",
+            objectFit: "cover",
+            objectPosition: "center",
+          }}
+          cldImg={landingPageImage}
+        />
+      ) : (
+        ""
+      )}
       <HomeProfile />
     </div>
   );

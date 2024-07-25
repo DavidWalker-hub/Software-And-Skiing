@@ -7,6 +7,7 @@ import {
 } from "@remix-run/react";
 import "./tailwind.css";
 import AppBar from "./components/AppBar";
+import { ImageProvider } from "./hooks/ImageContext";
 
 export function Layout({ children }: { children: React.ReactNode }) {
   return (
@@ -30,7 +31,9 @@ export default function App() {
   return (
     <>
       <AppBar />
-      <Outlet />
+      <ImageProvider>
+        <Outlet />
+      </ImageProvider>
     </>
   );
 }
