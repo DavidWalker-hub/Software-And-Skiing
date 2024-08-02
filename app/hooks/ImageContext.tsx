@@ -15,17 +15,21 @@ import { text } from "@cloudinary/url-gen/qualifiers/source";
 import { TextStyle } from "@cloudinary/url-gen/qualifiers/textStyle";
 import { Position } from "@cloudinary/url-gen/qualifiers/position";
 import { ar1X1 } from "@cloudinary/url-gen/qualifiers/aspectRatio";
-import { max } from "@cloudinary/url-gen/actions/roundCorners";
+import { byRadius, max } from "@cloudinary/url-gen/actions/roundCorners";
 // import "dotenv/config";
 
 type ImageContextType = {
   landingPageImage: CloudinaryImage | undefined;
-  ProfileImage: CloudinaryImage | undefined;
+  profileImage: CloudinaryImage | undefined;
+  skiingImage: CloudinaryImage | undefined;
+  summerImage: CloudinaryImage | undefined;
 };
 
 const ImageContext = createContext<ImageContextType>({
   landingPageImage: new CloudinaryImage(),
-  ProfileImage: new CloudinaryImage(),
+  profileImage: new CloudinaryImage(),
+  skiingImage: new CloudinaryImage(),
+  summerImage: new CloudinaryImage(),
 });
 
 export const useImage = () => {
@@ -66,8 +70,6 @@ const useImageStore = () => {
       )
       .effect(upscale());
     setLandingPageImage(img);
-
-    console.log("img", img);
   }, [cld]);
 
   const getProfileImage = useCallback(() => {
@@ -78,19 +80,48 @@ const useImageStore = () => {
       .roundCorners(max());
     //   .effect(upscale());
     setProfilePageImage(img);
-    console.log("img", img);
+  }, [cld]);
+
+  const getSkiingImage = useCallback(() => {
+    const img = cld
+      .image("SoftwareAndSkiing/ski-photoshoot-1")
+      .quality("auto")
+      .roundCorners(byRadius(5));
+    //   .effect(upscale());
+    setSkiingPageImage(img);
+  }, [cld]);
+
+  const getSummerImage = useCallback(() => {
+    const img = cld
+      .image("SoftwareAndSkiing/ski-photoshoot-1")
+      .quality("auto")
+      .roundCorners(byRadius(5));
+    //   .effect(upscale());
+    setSummerPageImage(img);
   }, [cld]);
 
   useEffect(() => {
     getLandingPageImage();
     getProfileImage();
-  }, [cld, getLandingPageImage, getProfileImage]);
+    getSkiingImage();
+    getSummerImage();
+  }, [
+    cld,
+    getLandingPageImage,
+    getProfileImage,
+    getSkiingImage,
+    getSummerImage,
+  ]);
 
   const [landingPageImage, setLandingPageImage] = useState<CloudinaryImage>();
-  const [ProfileImage, setProfilePageImage] = useState<CloudinaryImage>();
+  const [profileImage, setProfilePageImage] = useState<CloudinaryImage>();
+  const [skiingImage, setSkiingPageImage] = useState<CloudinaryImage>();
+  const [summerImage, setSummerPageImage] = useState<CloudinaryImage>();
 
   return {
     landingPageImage,
-    ProfileImage,
+    profileImage,
+    skiingImage,
+    summerImage,
   };
 };

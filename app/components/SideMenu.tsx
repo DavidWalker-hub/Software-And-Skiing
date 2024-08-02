@@ -18,10 +18,10 @@ const SideMenu: React.FC<Props> = ({ isMenuOpen }) => {
               <a href="/">Home</a>
             </li>
             <li>
-              <a href="/summer">Summer</a>
+              <a href="/work/summer">Summer</a>
             </li>
             <li>
-              <a href="/">Winter</a>
+              <a href="/work/winter">Winter</a>
             </li>
             <li>
               <a href="/">Contact</a>

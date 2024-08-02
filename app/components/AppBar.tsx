@@ -13,11 +13,11 @@ const AppBar: React.FC = () => {
             href="/"
             className="flex items-center space-x-3 rtl:space-x-reverse"
           >
-            <h1 className="self-center text-2xl font-semibold whitespace-nowrap text-slate-900">
-              <a href="/">WalkerSAS</a>
-            </h1>
+            <h2 className="self-center text-2xl font-semibold whitespace-nowrap text-slate-900">
+              WalkerSAS
+            </h2>
           </a>
-          <div className="items-center justify-between space-x-6 hidden md:flex">
+          {/* <div className="items-center justify-between space-x-6 hidden md:flex">
             <a
               href="/summer"
               className="text-lg  text-slate-600  hover:underline"
@@ -31,7 +31,7 @@ const AppBar: React.FC = () => {
             >
               Winter
             </a>
-          </div>
+          </div> */}
           <div>
             {/* <button className="text-4xl  text-slate-600 ">&#9776;</button> */}
             <BurgerMenu isMenuOpen={isMenuOpen} setIsMenuOpen={setIsMenuOpen} />

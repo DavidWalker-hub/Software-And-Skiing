@@ -51,7 +51,7 @@ export default function Index() {
           </a>
         </li>
       </ul> */}
-      {landingPageImage ? (
+      {landingPageImage && (
         <AdvancedImage
           style={{
             maxWidth: "100%",
@@ -62,8 +62,6 @@ export default function Index() {
           }}
           cldImg={landingPageImage}
         />
-      ) : (
-        ""
       )}
       <HomeProfile />
     </div>

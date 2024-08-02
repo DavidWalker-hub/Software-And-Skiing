@@ -8,6 +8,7 @@ import {
 import "./tailwind.css";
 import AppBar from "./components/AppBar";
 import { ImageProvider } from "./hooks/ImageContext";
+import { SeasonProvider } from "./hooks/SeasonContext";
 
 export function Layout({ children }: { children: React.ReactNode }) {
   return (
@@ -32,7 +33,9 @@ export default function App() {
     <>
       <AppBar />
       <ImageProvider>
-        <Outlet />
+        <SeasonProvider>
+          <Outlet />
+        </SeasonProvider>
       </ImageProvider>
     </>
   );
