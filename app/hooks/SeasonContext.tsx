@@ -47,7 +47,6 @@ const useSeasonStore = () => {
   }, [location.pathname, navigate]);
 
   const handleNavigation = (season: "summer" | "winter") => {
-    console.log("DOES THIS TRIGGER?");
     setNextSeason(season);
     setTimeout(() => {
       setCurrentSeason(season);

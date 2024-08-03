@@ -6,7 +6,7 @@ const Work: React.FC = () => {
   const { nextSeason, handleNavigation } = useSeason();
 
   return (
-    <div className="pt-24 font-sans">
+    <div className="pt-24 font-sans -z-10 h-screen mb-24">
       <div className="flex justify-center mb-8">
         <div className="relative flex items-center text-gray-500">
           <button
@@ -58,7 +58,7 @@ const Work: React.FC = () => {
 
       {/* set animation in the component with a delay. use effect on location.pathname and if it includes summer then set timeout off screen to on screen */}
 
-      <div className="relative overflow-hidden">
+      <div className=" overflow-hidden pt-8">
         <Outlet />
       </div>
     </div>

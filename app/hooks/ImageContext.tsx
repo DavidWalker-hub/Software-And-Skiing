@@ -16,7 +16,6 @@ import { TextStyle } from "@cloudinary/url-gen/qualifiers/textStyle";
 import { Position } from "@cloudinary/url-gen/qualifiers/position";
 import { ar1X1 } from "@cloudinary/url-gen/qualifiers/aspectRatio";
 import { byRadius, max } from "@cloudinary/url-gen/actions/roundCorners";
-// import "dotenv/config";
 
 type ImageContextType = {
   landingPageImage: CloudinaryImage | undefined;
@@ -93,7 +92,7 @@ const useImageStore = () => {
 
   const getSummerImage = useCallback(() => {
     const img = cld
-      .image("SoftwareAndSkiing/ski-photoshoot-1")
+      .image("SoftwareAndSkiing/coding_screen")
       .quality("auto")
       .roundCorners(byRadius(5));
     //   .effect(upscale());

@@ -30,13 +30,13 @@ export function Layout({ children }: { children: React.ReactNode }) {
 
 export default function App() {
   return (
-    <>
-      <AppBar />
-      <ImageProvider>
-        <SeasonProvider>
+    <SeasonProvider>
+      <>
+        <AppBar />
+        <ImageProvider>
           <Outlet />
-        </SeasonProvider>
-      </ImageProvider>
-    </>
+        </ImageProvider>
+      </>
+    </SeasonProvider>
   );
 }

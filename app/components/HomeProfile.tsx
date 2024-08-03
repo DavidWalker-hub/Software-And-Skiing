@@ -21,7 +21,7 @@ const HomeProfile: React.FC = () => {
         // </div>
       )}
       <div className="lg:col-span-3">
-        <h3>About Me</h3>
+        <h3 className="text-3xl font-bold mb-4">About Me</h3>
         <p>
           Where to begin? Lorem ipsum dolor sit amet consectetur adipisicing
           elit. Eligendi fugiat dolorum, qui porro illum modi magni dicta earum

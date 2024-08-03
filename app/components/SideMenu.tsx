@@ -1,10 +1,23 @@
+import { Link } from "@remix-run/react";
 import React from "react";
+import { useSeason } from "~/hooks/SeasonContext";
 
 interface Props {
   isMenuOpen: boolean;
+  setIsMenuOpen: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
-const SideMenu: React.FC<Props> = ({ isMenuOpen }) => {
+const SideMenu: React.FC<Props> = ({ isMenuOpen, setIsMenuOpen }) => {
+  const { setCurrentSeason, setNextSeason } = useSeason();
+
+  const handleLinkNavigation = (season?: "summer" | "winter") => {
+    setIsMenuOpen(false);
+    if (season) {
+      setCurrentSeason(season);
+      setNextSeason(season);
+    }
+  };
+
   return (
     <>
       <div
@@ -15,16 +28,34 @@ const SideMenu: React.FC<Props> = ({ isMenuOpen }) => {
         <div className="mt-10 flex flex-wrap justify-between items-center mx-auto">
           <ul className="space-y-3">
             <li>
-              <a href="/">Home</a>
+              <Link
+                to="/"
+                onClick={() => handleLinkNavigation()}
+                prefetch="render"
+              >
+                Home
+              </Link>
             </li>
             <li>
-              <a href="/work/summer">Summer</a>
+              <Link
+                to="/work/summer"
+                onClick={() => handleLinkNavigation("summer")}
+              >
+                Summer
+              </Link>
             </li>
             <li>
-              <a href="/work/winter">Winter</a>
+              <Link
+                to="/work/winter"
+                onClick={() => handleLinkNavigation("winter")}
+              >
+                Winter
+              </Link>
             </li>
             <li>
-              <a href="/">Contact</a>
+              <Link to="/" onClick={() => handleLinkNavigation()}>
+                Contact
+              </Link>
             </li>
           </ul>
         </div>
