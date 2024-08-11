@@ -8,14 +8,11 @@ interface Props {
 }
 
 const SideMenu: React.FC<Props> = ({ isMenuOpen, setIsMenuOpen }) => {
-  const { setCurrentSeason, setNextSeason } = useSeason();
+  const { handleLinkNavigation } = useSeason();
 
-  const handleLinkNavigation = (season?: "summer" | "winter") => {
+  const handleSideMenuNavigation = (season?: "summer" | "winter") => {
     setIsMenuOpen(false);
-    if (season) {
-      setCurrentSeason(season);
-      setNextSeason(season);
-    }
+    handleLinkNavigation(season);
   };
 
   return (
@@ -30,7 +27,7 @@ const SideMenu: React.FC<Props> = ({ isMenuOpen, setIsMenuOpen }) => {
             <li>
               <Link
                 to="/"
-                onClick={() => handleLinkNavigation()}
+                onClick={() => handleSideMenuNavigation()}
                 prefetch="render"
               >
                 Home
@@ -39,7 +36,7 @@ const SideMenu: React.FC<Props> = ({ isMenuOpen, setIsMenuOpen }) => {
             <li>
               <Link
                 to="/work/summer"
-                onClick={() => handleLinkNavigation("summer")}
+                onClick={() => handleSideMenuNavigation("summer")}
               >
                 Summer
               </Link>
@@ -47,13 +44,13 @@ const SideMenu: React.FC<Props> = ({ isMenuOpen, setIsMenuOpen }) => {
             <li>
               <Link
                 to="/work/winter"
-                onClick={() => handleLinkNavigation("winter")}
+                onClick={() => handleSideMenuNavigation("winter")}
               >
                 Winter
               </Link>
             </li>
             <li>
-              <Link to="/" onClick={() => handleLinkNavigation()}>
+              <Link to="/" onClick={() => handleSideMenuNavigation()}>
                 Contact
               </Link>
             </li>

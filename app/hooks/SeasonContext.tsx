@@ -7,6 +7,7 @@ type SeasonContextType = {
   nextSeason: "summer" | "winter";
   setNextSeason: React.Dispatch<React.SetStateAction<"summer" | "winter">>;
   handleNavigation: (season: "summer" | "winter") => void;
+  handleLinkNavigation: (season?: "summer" | "winter") => void;
 };
 
 const SeasonContext = createContext<SeasonContextType>({
@@ -15,6 +16,7 @@ const SeasonContext = createContext<SeasonContextType>({
   nextSeason: "summer",
   setNextSeason: () => {},
   handleNavigation: () => {},
+  handleLinkNavigation: () => {},
 });
 
 export const useSeason = () => {
@@ -56,11 +58,19 @@ const useSeasonStore = () => {
     }, 200);
   };
 
+  const handleLinkNavigation = (season?: "summer" | "winter") => {
+    if (season) {
+      setCurrentSeason(season);
+      setNextSeason(season);
+    }
+  };
+
   return {
     currentSeason,
     setCurrentSeason,
     nextSeason,
     setNextSeason,
     handleNavigation,
+    handleLinkNavigation,
   };
 };
