@@ -54,12 +54,14 @@ export default function Index() {
           cldImg={landingPageImage}
         />
       )}
-      <div className="grid grid-cols-1 md:grid-cols-2 justify-center justify-items-center gap-4 mt-8">
+      <div className="grid grid-cols-1 md:grid-cols-2 justify-center justify-items-center  mt-8">
         {workData.map((work) => (
           <WorkSummary key={work.title} work={work} />
         ))}
       </div>
-      <HomeProfile />
+      <div className="bg-slate-50">
+        <HomeProfile />
+      </div>
     </div>
   );
 }

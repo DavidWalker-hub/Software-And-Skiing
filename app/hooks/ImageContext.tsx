@@ -56,11 +56,12 @@ const useImageStore = () => {
       .image("SoftwareAndSkiing/landing-page")
       .quality("auto")
       .resize(auto().gravity(autoGravity()).width(1920).height(1080))
+      // .effect(blur().strength(10000))
       .overlay(
         source(
           text(
             "Walker \n Software and Skiing",
-            new TextStyle("Roboto", 80)
+            new TextStyle("Roboto", 140)
               .fontWeight("bold")
               .textAlignment("center")
               .letterSpacing(2)
@@ -76,7 +77,8 @@ const useImageStore = () => {
       .image("SoftwareAndSkiing/profile")
       .quality("auto")
       .resize(auto().width(500).aspectRatio(ar1X1()).gravity(autoGravity()))
-      .roundCorners(max());
+      .roundCorners(max())
+      .backgroundColor("#f8fafc");
     //   .effect(upscale());
     setProfilePageImage(img);
   }, [cld]);
